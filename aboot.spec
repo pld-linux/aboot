@@ -10,8 +10,9 @@ Source0:	http://dl.sourceforge.net/aboot/%{name}-%{version}.tar.gz
 # Source0-md5:	00c35c192d320bb005ad9bead7043d2c
 Patch0:		%{name}-doc_Makefile.patch
 URL:		http://aboot.sourceforge.net/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	kernel24-headers
 ExclusiveArch:	alpha
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The aboot program is the preferred way of booting Linux when using SRM
