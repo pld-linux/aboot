@@ -1,4 +1,5 @@
-Summary:	A bootloader which can be started from the SRM console.
+Summary:	A bootloader which can be started from the SRM console
+Summary(pl):	Bootloader uruchamialny z konsoli SRM
 Name:		aboot
 Version:	0.7a
 Release:	1
@@ -6,8 +7,8 @@ License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
-Source0:        ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.7a/%{name}-%{version}.tar.gz
-Source1: 	http://www.itp.uni-hannover.de/~kreutzm/data/abootman.tar.bz2
+Source0:	ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.7a/%{name}-%{version}.tar.gz
+Source1:	http://www.itp.uni-hannover.de/~kreutzm/data/%{name}man.tar.bz2
 #Patch0:		%{name}-0.5-make.patch.gz
 #Patch1:		%{name}-0.5-elf.patch.gz
 #Patch2:		%{name}-0.5-glibc2.patch.gz
@@ -28,6 +29,18 @@ partition tables in DEC UNIX format, and interactive booting and
 default configurations for SRM consoles that cannot pass long option
 strings.
 
+%description -l pl
+Program aboot jest preferowanym sposobem bootowania Linuksa przy
+u¿yciu SRM (zwykle u¿ywanego do bootowania DEC UNIX). aboot pozwala na
+tworzenie bootowalnych urz±dzeñ blokowych i zawiera program, który
+mo¿e bootowaæ j±dra Linuksa z systemu plików bootowalnego dla SRM.
+Obs³uguje tak¿e bezpo¶rednie bootowanie z wielu systemów plików (ext2,
+ISO9660, UFS), bootowanie plików wykonywalnych (ELF i ECOFF),
+bootowanie skompresowanych j±der, bootowanie z sieci (przez bootp),
+tablice partycji w formacie DEC UNIX, interaktywne bootowanie oraz
+standardowe konfiguracje konsol SRM, które nie pozwalaj± na
+przekazywanie d³ugich nazw opcji.
+
 %prep
 %setup -q
 #%patch0 -p1
@@ -41,15 +54,13 @@ strings.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}/man8
-install -d $RPM_BUILD_ROOT%{_mandir}/man5
+install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
 
 %{__make} root=$RPM_BUILD_ROOT install
 
 bzip2 -d -c %{SOURCE1} |tar x
-cp *.8 $RPM_BUILD_ROOT%{_mandir}/man8
-cp *.5 $RPM_BUILD_ROOT%{_mandir}/man5
-
+install *.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install *.5 $RPM_BUILD_ROOT%{_mandir}/man5
 
 gzip -9nf README ChangeLog TODO 
 
