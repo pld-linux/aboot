@@ -6,7 +6,7 @@ Version:	0.9
 Release:	1
 License:	GPL
 Group:		Applications/System
-Source0:	http://prdownloads.sourceforge.net/aboot/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/aboot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-doc_Makefile.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
