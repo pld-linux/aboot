@@ -3,7 +3,7 @@ Summary(pl):	Bootloader uruchamialny z konsoli SRM
 Summary(pt_BR):	Bootloader para ser inicializado pelo firmware SRM
 Name:		aboot
 Version:	0.9b
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/aboot/%{name}-%{version}.tar.gz
@@ -54,7 +54,8 @@ SRM que não suportam a passagem de opções longas.
 %patch0 -p1
 
 %build
-%{__make}
+%{__make} \
+	KSRC=/usr/src/linux-2.4
 
 %install
 rm -rf $RPM_BUILD_ROOT
