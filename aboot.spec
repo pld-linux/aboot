@@ -1,18 +1,18 @@
-Summary: A bootloader which can be started from the SRM console.
-Name: aboot
-%define aboot_version 0.5
-Version: %{aboot_version}
-Release: 10
-ExclusiveArch: alpha
-Copyright: distributable
-Group: System Environment/Base
-Source: ftp://ftp.azstarnet.com/pub/linux/axp/aboot/aboot-%{aboot_version}.tar.gz
-Patch0: aboot-0.5-make.patch.gz
-Patch1: aboot-0.5-elf.patch.gz
-Patch2: aboot-0.5-glibc2.patch.gz
-Patch3: aboot-0.5-rth.patch.gz
-Patch4: aboot-0.5-jay.patch
-BuildRoot: /var/tmp/aboot-root
+Summary:	A bootloader which can be started from the SRM console.
+Name:		aboot
+Version:	0.5
+Release:	12
+Copyright:	distributable
+Group:		Utilities/System
+Group(pl):	Narzêdzia/System
+Source:		ftp://ftp.azstarnet.com/pub/linux/axp/aboot/%{name}-%{version}.tar.gz
+Patch0:		aboot-0.5-make.patch.gz
+Patch1:		aboot-0.5-elf.patch.gz
+Patch2:		aboot-0.5-glibc2.patch.gz
+Patch3:		aboot-0.5-rth.patch.gz
+Patch4:		aboot-0.5-jay.patch
+BuildRoot:	/tmp/%{name}-%{version}-root
+ExclusiveArch:	alpha
 
 %description
 The aboot program is the preferred way of booting Linux when using SRM
@@ -35,29 +35,27 @@ the aboot package.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p0
+
 %build
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT
-chmod go= $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_mandir}/man8
 
-mkdir -p $RPM_BUILD_ROOT/usr/man/man8
 make root=$RPM_BUILD_ROOT install
-cp -p sdisklabel/swriteboot.8 tools/e2writeboot.8 $RPM_BUILD_ROOT/usr/man/man8
+
+cp sdisklabel/swriteboot.8 tools/e2writeboot.8 $RPM_BUILD_ROOT%{_mandir}/man8
+
+gzip -9nf README doc/* \
+	$RPM_BUILD_ROOT%{_mandir}/man8/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-, root, root)
-%doc INSTALL README doc/*
-
-%attr(644, root, root) /boot/bootlx
-/sbin/abootconf
-/sbin/e2writeboot
-/sbin/isomarkboot
-/sbin/swriteboot
-/usr/man/man8/e2writeboot.8
-/usr/man/man8/swriteboot.8
+%defattr(644,root,root,755)
+%doc README.gz doc/*
+%attr(755,root,root) /sbin/*
+%attr(640,root,root) /boot/bootlx
+%{_mandir}/man8/*
