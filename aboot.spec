@@ -1,19 +1,14 @@
 Summary:	A bootloader which can be started from the SRM console
 Summary(pl):	Bootloader uruchamialny z konsoli SRM
 Name:		aboot
-Version:	0.7a
+Version:	0.9
 Release:	1
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
-Source0:	ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.7a/%{name}-%{version}.tar.gz
-Source1:	http://www.itp.uni-hannover.de/~kreutzm/data/%{name}man.tar.bz2
-#Patch0:		%{name}-0.5-make.patch.gz
-#Patch1:		%{name}-0.5-elf.patch.gz
-#Patch2:		%{name}-0.5-glibc2.patch.gz
-#Patch3:		%{name}-0.5-rth.patch.gz
-#Patch4:		%{name}-0.5-jay.patch
+Source0:	ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.9/%{name}-%{version}.tar.gz
+Patch0:			%{name}-doc_Makefile.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
 
@@ -43,24 +38,15 @@ przekazywanie d³ugich nazw opcji.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
-#%patch4 -p0
+%patch0 -p1
 
 %build
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}/man{5,8}
 
 %{__make} root=$RPM_BUILD_ROOT install
-
-bzip2 -d -c %{SOURCE1} |tar x
-install *.8 $RPM_BUILD_ROOT%{_mandir}/man8
-install *.5 $RPM_BUILD_ROOT%{_mandir}/man5
 
 gzip -9nf README ChangeLog TODO 
 
