@@ -11,7 +11,7 @@ Patch1:		aboot-0.5-elf.patch.gz
 Patch2:		aboot-0.5-glibc2.patch.gz
 Patch3:		aboot-0.5-rth.patch.gz
 Patch4:		aboot-0.5-jay.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
 
 %description
