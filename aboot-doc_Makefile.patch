@@ -1,0 +1,12 @@
+diff -urN aboot-0.9-orig/doc/man/Makefile aboot-0.9/doc/man/Makefile
+--- aboot-0.9-orig/doc/man/Makefile	Mon Oct  8 23:03:51 2001
++++ aboot-0.9/doc/man/Makefile	Thu Jan 31 09:34:25 2002
+@@ -6,7 +6,7 @@
+ # use that value. Otherwise default to /usr/man.
+ 
+ ifeq ($(mandir),)
+-MANDIR=/usr/man
++MANDIR=$(root)/usr/share/man
+ else
+ MANDIR=$(mandir)
+ endif
