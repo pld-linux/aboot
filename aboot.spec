@@ -3,8 +3,9 @@ Name:		aboot
 Version:	0.5
 Release:	12
 Copyright:	distributable
-Group:		Utilities/System
-Group(pl):	Narzêdzia/System
+Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.azstarnet.com/pub/linux/axp/aboot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-0.5-make.patch.gz
 Patch1:		%{name}-0.5-elf.patch.gz
