@@ -1,0 +1,69 @@
+-----------------------------------------------------------------------------
+>>>>>>>>>>> aboot-0.5-8 patches
+-----------------------------------------------------------------------------
+
+--- fs/ext2.c.ORIG	Thu Apr 22 17:29:39 1999
++++ fs/ext2.c	Thu Apr 22 17:49:18 1999
+@@ -20,13 +20,12 @@
+ #include "disklabel.h"
+ #include "utils.h"
+ 
+-#define MAX_SUPPORTED_GROUPS	256		/* supports 2GB filesystem */
+ #define MAX_OPEN_FILES		4
+ 
+ extern struct bootfs ext2fs;
+ 
+ static struct ext2_super_block sb;
+-static struct ext2_group_desc gds[MAX_SUPPORTED_GROUPS];
++static struct ext2_group_desc *gds;
+ static int ngroups = 0;
+ static int directlim;			/* Maximum direct blkno */
+ static int ind1lim;			/* Maximum single-indir blkno */
+@@ -87,11 +86,9 @@
+ 
+ 	ngroups = (sb.s_blocks_count + sb.s_blocks_per_group - 1)
+ 	  / sb.s_blocks_per_group;
+-	if (ngroups > MAX_SUPPORTED_GROUPS) {
+-		printf("ext2_init: too many groups (%d): max is %d\n",
+-		       ngroups, MAX_SUPPORTED_GROUPS);
+-		return -1;
+-	}
++
++	gds = (struct ext2_group_desc *)
++	          malloc((size_t)(ngroups * sizeof(struct ext2_group_desc)));
+ 
+ 	/* read in the group descriptors (immediately follows superblock) */
+ 	cons_read(dev, gds, ngroups * sizeof(struct ext2_group_desc),
+
+--- tools/e2lib.c.ORIG	Thu Apr 22 17:53:20 1999
++++ tools/e2lib.c	Thu Apr 22 17:54:20 1999
+@@ -18,12 +18,11 @@
+ #include <e2lib.h>
+ 
+ 
+-#define		MAX_SUPPORTED_GROUPS	256	/* Supports 2Gb filesystem */
+ #define		MAX_OPEN_FILES		8 
+ 
+ int				fd = -1; 
+ struct ext2_super_block		sb;
+-struct ext2_group_desc		gds[MAX_SUPPORTED_GROUPS];
++struct ext2_group_desc		*gds;
+ int				ngroups = 0;
+ int				blocksize;	/* Block size of this fs */
+ int				directlim;	/* Maximum direct blkno */
+@@ -194,11 +193,8 @@
+     }
+ 
+     ngroups = (sb.s_blocks_count+sb.s_blocks_per_group-1)/sb.s_blocks_per_group;
+-    if(ngroups > MAX_SUPPORTED_GROUPS) {
+-	fprintf(stderr, "ext2_init: too many groups (%d): max is %d\n",
+-		ngroups, MAX_SUPPORTED_GROUPS);
+-	return(-1);
+-    }
++    gds = (struct ext2_group_desc *)
++	      malloc((size_t)(ngroups * sizeof(struct ext2_group_desc)));
+ 
+     /* Read in the group descriptors (immediately follows superblock) */
+     if ((size_t) read(fd, gds, ngroups * sizeof(struct ext2_group_desc))
+
+-----------------------------------------------------------------------------
