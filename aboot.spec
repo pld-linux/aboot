@@ -38,7 +38,7 @@ install the aboot package.
 %patch4 -p0
 
 %build
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
