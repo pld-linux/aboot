@@ -58,7 +58,8 @@ SRM que não suportam a passagem de opções longas.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} root=$RPM_BUILD_ROOT install
+%{__make} install \
+	root=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
