@@ -44,7 +44,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_mandir}/man8
 
-make root=$RPM_BUILD_ROOT install
+%{__make} root=$RPM_BUILD_ROOT install
 
 cp sdisklabel/swriteboot.8 tools/e2writeboot.8 $RPM_BUILD_ROOT%{_mandir}/man8
 
