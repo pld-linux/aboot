@@ -6,11 +6,11 @@ Copyright:	distributable
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
 Source0:	ftp://ftp.azstarnet.com/pub/linux/axp/aboot/%{name}-%{version}.tar.gz
-Patch0:		aboot-0.5-make.patch.gz
-Patch1:		aboot-0.5-elf.patch.gz
-Patch2:		aboot-0.5-glibc2.patch.gz
-Patch3:		aboot-0.5-rth.patch.gz
-Patch4:		aboot-0.5-jay.patch
+Patch0:		%{name}-0.5-make.patch.gz
+Patch1:		%{name}-0.5-elf.patch.gz
+Patch2:		%{name}-0.5-glibc2.patch.gz
+Patch3:		%{name}-0.5-rth.patch.gz
+Patch4:		%{name}-0.5-jay.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
 
