@@ -2,11 +2,12 @@ Summary:	A bootloader which can be started from the SRM console
 Summary(pl):	Bootloader uruchamialny z konsoli SRM
 Summary(pt_BR):	Bootloader para ser inicializado pelo firmware SRM
 Name:		aboot
-Version:	0.9
+Version:	0.9b
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/aboot/%{name}-%{version}.tar.gz
+# Source0-md5:	00c35c192d320bb005ad9bead7043d2c
 Patch0:		%{name}-doc_Makefile.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
