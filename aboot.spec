@@ -5,10 +5,6 @@ Version:	0.9
 Release:	1
 License:	GPL
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(es):	Aplicaciones/Sistema
-Group(pl):	Aplikacje/System
-Group(pt_BR):	Aplicações/Sistema
 Source0:	ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.9/%{name}-%{version}.tar.gz
 Patch0:		%{name}-doc_Makefile.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
