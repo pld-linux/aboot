@@ -1,17 +1,17 @@
 Summary:	A bootloader which can be started from the SRM console.
 Name:		aboot
-Version:	0.5
-Release:	12
-Copyright:	distributable
+Version:	0.7a
+Release:	1
+License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
-Source0:	ftp://ftp.azstarnet.com/pub/linux/axp/aboot/%{name}-%{version}.tar.gz
-Patch0:		%{name}-0.5-make.patch.gz
-Patch1:		%{name}-0.5-elf.patch.gz
-Patch2:		%{name}-0.5-glibc2.patch.gz
-Patch3:		%{name}-0.5-rth.patch.gz
-Patch4:		%{name}-0.5-jay.patch
+Source0:        ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.7a/%{name}-%{version}.tar.gz
+#Patch0:		%{name}-0.5-make.patch.gz
+#Patch1:		%{name}-0.5-elf.patch.gz
+#Patch2:		%{name}-0.5-glibc2.patch.gz
+#Patch3:		%{name}-0.5-rth.patch.gz
+#Patch4:		%{name}-0.5-jay.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
 
@@ -27,16 +27,13 @@ partition tables in DEC UNIX format, and interactive booting and
 default configurations for SRM consoles that cannot pass long option
 strings.
 
-If you are installing Red Hat Linux on an Alpha, you'll need to
-install the aboot package.
-
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
+#%patch4 -p0
 
 %build
 %{__make}
@@ -49,7 +46,7 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man8
 
 cp sdisklabel/swriteboot.8 tools/e2writeboot.8 $RPM_BUILD_ROOT%{_mandir}/man8
 
-gzip -9nf README doc/* \
+gzip -9nf README ChangeLog TODO \
 	$RPM_BUILD_ROOT%{_mandir}/man8/*
 
 %clean
@@ -57,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz doc/*
+%doc README.gz 
 %attr(755,root,root) /sbin/*
 %attr(640,root,root) /boot/bootlx
 %{_mandir}/man8/*
