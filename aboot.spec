@@ -46,14 +46,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} root=$RPM_BUILD_ROOT install
 
-gzip -9nf README ChangeLog TODO 
+gzip -9nf README ChangeLog TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz 
+%doc README.gz
 %attr(755,root,root) /sbin/*
 %attr(640,root,root) /boot/bootlx
 %{_mandir}/man8/*
