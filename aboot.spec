@@ -7,6 +7,7 @@ Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Source0:        ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.7a/%{name}-%{version}.tar.gz
+Source1: 	http://www.itp.uni-hannover.de/~kreutzm/data/abootman.tar.bz2
 #Patch0:		%{name}-0.5-make.patch.gz
 #Patch1:		%{name}-0.5-elf.patch.gz
 #Patch2:		%{name}-0.5-glibc2.patch.gz
@@ -41,13 +42,16 @@ strings.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_mandir}/man8
+install -d $RPM_BUILD_ROOT%{_mandir}/man5
 
 %{__make} root=$RPM_BUILD_ROOT install
 
-cp sdisklabel/swriteboot.8 tools/e2writeboot.8 $RPM_BUILD_ROOT%{_mandir}/man8
+bzip2 -d -c %{SOURCE1} |tar x
+cp *.8 $RPM_BUILD_ROOT%{_mandir}/man8
+cp *.5 $RPM_BUILD_ROOT%{_mandir}/man5
 
-gzip -9nf README ChangeLog TODO \
-	$RPM_BUILD_ROOT%{_mandir}/man8/*
+
+gzip -9nf README ChangeLog TODO 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,3 +62,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /sbin/*
 %attr(640,root,root) /boot/bootlx
 %{_mandir}/man8/*
+%{_mandir}/man5/*
