@@ -1,11 +1,12 @@
 Summary:	A bootloader which can be started from the SRM console
 Summary(pl):	Bootloader uruchamialny z konsoli SRM
+Summary(pt_BR):	Bootloader para ser inicializado pelo firmware SRM
 Name:		aboot
 Version:	0.9
 Release:	1
 License:	GPL
 Group:		Applications/System
-Source0:	ftp://ftp.alphalinux.org/pub/Linux-Alpha/aboot/0.9/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/aboot/%{name}-%{version}.tar.gz
 Patch0:		%{name}-doc_Makefile.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	alpha
@@ -34,6 +35,18 @@ tablice partycji w formacie DEC UNIX, interaktywne bootowanie oraz
 standardowe konfiguracje konsol SRM, które nie pozwalaj± na
 przekazywanie d³ugich nazw opcji.
 
+%description -l pt_BR
+O programa aboot é a maneira recomendada para inicializar o Linux
+quando é utilizado o firmware SRM (o firmware normalmente utilizado para
+inicializar o DEC UNIX). Aboot suporta a criação de dispositivos
+inicializáveis e contém um programa que pode carregar o kernel Linux de
+um sistema de arquivos que é inicializável pelo SRM. Aboot também suporta
+inicialização diretamente a partir de vários sistemas de arquivos (ext2,
+ISO9660, UFS), carga de arquivos executáveis (ELF e ECOFF), carga de kernels
+compactados, boot remoto (utilizando bootp), tabelas de partição no formato
+DEC UNIX, e inicialização interativa e configurações default para consoles
+SRM que não suportam a passagem de opções longas.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -46,14 +59,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} root=$RPM_BUILD_ROOT install
 
-gzip -9nf README ChangeLog TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz
+%doc README ChangeLog TODO
 %attr(755,root,root) /sbin/*
 %attr(640,root,root) /boot/bootlx
 %{_mandir}/man8/*
