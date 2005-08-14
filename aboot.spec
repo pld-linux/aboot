@@ -6,7 +6,7 @@ Version:	0.9b
 Release:	2
 License:	GPL
 Group:		Applications/System
-Source0:	http://dl.sourceforge.net/aboot/%{name}-%{version}.tar.gz
+Source0:	http://aboot.sourceforge.net/tarballs/%{name}-%{version}.tar.gz
 # Source0-md5:	00c35c192d320bb005ad9bead7043d2c
 Patch0:		%{name}-doc_Makefile.patch
 URL:		http://aboot.sourceforge.net/
