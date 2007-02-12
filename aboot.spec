@@ -1,6 +1,6 @@
 Summary:	A bootloader which can be started from the SRM console
-Summary(pl):	Bootloader uruchamialny z konsoli SRM
-Summary(pt_BR):	Bootloader para ser inicializado pelo firmware SRM
+Summary(pl.UTF-8):   Bootloader uruchamialny z konsoli SRM
+Summary(pt_BR.UTF-8):   Bootloader para ser inicializado pelo firmware SRM
 Name:		aboot
 Version:	0.9b
 Release:	2
@@ -26,29 +26,29 @@ partition tables in DEC UNIX format, and interactive booting and
 default configurations for SRM consoles that cannot pass long option
 strings.
 
-%description -l pl
+%description -l pl.UTF-8
 Program aboot jest preferowanym sposobem bootowania Linuksa przy
-uøyciu SRM (zwykle uøywanego do bootowania DEC UNIX). aboot pozwala na
-tworzenie bootowalnych urz±dzeÒ blokowych i zawiera program, ktÛry
-moøe bootowaÊ j±dra Linuksa z systemu plikÛw bootowalnego dla SRM.
-Obs≥uguje takøe bezpo∂rednie bootowanie z wielu systemÛw plikÛw (ext2,
-ISO9660, UFS), bootowanie plikÛw wykonywalnych (ELF i ECOFF),
-bootowanie skompresowanych j±der, bootowanie z sieci (przez bootp),
+u≈ºyciu SRM (zwykle u≈ºywanego do bootowania DEC UNIX). aboot pozwala na
+tworzenie bootowalnych urzƒÖdze≈Ñ blokowych i zawiera program, kt√≥ry
+mo≈ºe bootowaƒá jƒÖdra Linuksa z systemu plik√≥w bootowalnego dla SRM.
+Obs≈Çuguje tak≈ºe bezpo≈õrednie bootowanie z wielu system√≥w plik√≥w (ext2,
+ISO9660, UFS), bootowanie plik√≥w wykonywalnych (ELF i ECOFF),
+bootowanie skompresowanych jƒÖder, bootowanie z sieci (przez bootp),
 tablice partycji w formacie DEC UNIX, interaktywne bootowanie oraz
-standardowe konfiguracje konsol SRM, ktÛre nie pozwalaj± na
-przekazywanie d≥ugich nazw opcji.
+standardowe konfiguracje konsol SRM, kt√≥re nie pozwalajƒÖ na
+przekazywanie d≈Çugich nazw opcji.
 
-%description -l pt_BR
-O programa aboot È a maneira recomendada para inicializar o Linux
-quando È utilizado o firmware SRM (o firmware normalmente utilizado para
-inicializar o DEC UNIX). Aboot suporta a criaÁ„o de dispositivos
-inicializ·veis e contÈm um programa que pode carregar o kernel Linux de
-um sistema de arquivos que È inicializ·vel pelo SRM. Aboot tambÈm suporta
-inicializaÁ„o diretamente a partir de v·rios sistemas de arquivos (ext2,
-ISO9660, UFS), carga de arquivos execut·veis (ELF e ECOFF), carga de kernels
-compactados, boot remoto (utilizando bootp), tabelas de partiÁ„o no formato
-DEC UNIX, e inicializaÁ„o interativa e configuraÁıes default para consoles
-SRM que n„o suportam a passagem de opÁıes longas.
+%description -l pt_BR.UTF-8
+O programa aboot √© a maneira recomendada para inicializar o Linux
+quando √© utilizado o firmware SRM (o firmware normalmente utilizado para
+inicializar o DEC UNIX). Aboot suporta a cria√ß√£o de dispositivos
+inicializ√°veis e cont√©m um programa que pode carregar o kernel Linux de
+um sistema de arquivos que √© inicializ√°vel pelo SRM. Aboot tamb√©m suporta
+inicializa√ß√£o diretamente a partir de v√°rios sistemas de arquivos (ext2,
+ISO9660, UFS), carga de arquivos execut√°veis (ELF e ECOFF), carga de kernels
+compactados, boot remoto (utilizando bootp), tabelas de parti√ß√£o no formato
+DEC UNIX, e inicializa√ß√£o interativa e configura√ß√µes default para consoles
+SRM que n√£o suportam a passagem de op√ß√µes longas.
 
 %prep
 %setup -q
