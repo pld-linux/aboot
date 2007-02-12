@@ -1,6 +1,6 @@
 Summary:	A bootloader which can be started from the SRM console
-Summary(pl.UTF-8):   Bootloader uruchamialny z konsoli SRM
-Summary(pt_BR.UTF-8):   Bootloader para ser inicializado pelo firmware SRM
+Summary(pl.UTF-8):	Bootloader uruchamialny z konsoli SRM
+Summary(pt_BR.UTF-8):	Bootloader para ser inicializado pelo firmware SRM
 Name:		aboot
 Version:	0.9b
 Release:	2
